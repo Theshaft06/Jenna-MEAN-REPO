@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <style>
+
+  </style>
+  <script src="http://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>  
+  <script type="text/javascript">
+
+    (document).ready(function(){
+      console.log("jQuery has loaded properly")
+
+      
+
+    });
+
+    </script>
+  <title>JS Intermediate</title>
+</head>
+<body>
+  
+</body>
+    <script>
+        function starString(num){     //this solves Part I
+            stars = "*";                //it will print a given variable number of stars
+            console.log(stars.repeat(num));
+        }
+        starString(8);
+
+        function drawStars(listy){      //this solves Part II
+            stars = "*";
+            for(let i = 0; i < listy.length; i++){     //it will iterate through a given array
+                console.log(stars.repeat(listy[i]));    //and print "*" as many times as the
+            }                                           //given number in the array
+        }
+        drawStars([4, 6, 1, 3, 5, 7, 25]);
+
+        function drawStars(listy){      //this solves Part III
+            stars = "*";                //modified to test if the item in the array is
+            for(let i = 0; i < listy.length; i++){      //an integer or a string; once tested, if it's
+                if(Number.isInteger(listy[i])){         //a number, it will print a star
+                    console.log(stars.repeat(listy[i]));    //as many times as the number; 
+                }                                       //if a string, it will take
+                else if(typeof listy[i] == "string"){   //the first letter of the string
+                    console.log(listy[i][0].repeat(listy[i].length).toLowerCase());
+                }                                       //and print it as many times as 
+            }                                           //the length of the string, finally it
+        }                                               //is also lowercased
+        drawStars([4, "Tom", 1, "Michael", 5, 7, "Jimmy Smith"]);
+    </script>
+</html>

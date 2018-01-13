@@ -1,0 +1,64 @@
+<html>
+<head>
+    <title>Javascript Demo</title>
+    <style>
+        body {
+            background-color:black;
+            font-family: monospace;
+            color:white;
+            font-size:50px;
+            text-align: center;
+            margin-top:20%;
+        }
+        #magic{
+            color: #777;
+            border-right: 1px solid #777;
+            padding-right: 7px;
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    
+    Coding is <div id="magic"></div>
+    
+    <script>
+        var words = ["a lot of fun", "about not giving up", "challenging and empowering", "creative expression", "what I learned at CodingDojo!"],
+            el = document.getElementById('magic'),
+            word_index = 0,  // keeps track of current word in the words array
+            character_counter = 0;  // keeps track of the current position within the current word
+        function updateText()
+        {
+            // el.innerHTML = el.innerHTML + words[word_counter][character_counter++];
+            var word = words[word_index];
+            var char = word[character_counter];
+            if(char === " "){
+                char = "&nbsp;";
+            }
+            character_counter += 1; // += 1 is same as ++
+            el.innerHTML += char;
+            if(character_counter === word.length +1){
+                word_index++;
+                character_counter = 0;
+                el.innerHTML = "";
+                // word_index = ++word_index % words.length; // ++ on right of var means it will examine the current value, utilize it to get the current value of the current character (see line 32); ++ on left will increment before doing anything with the value; if word_index is the length of the array, there should be no remainder, then word_index should be 0
+
+                if(word_index === words.length){
+                    word_index = 0;
+                }
+            }
+            // if(character_counter === words[word_counter].length +1)
+            // {
+            //     word_counter++;     //choose a different word
+            //     character_counter = 0;  //start over with the first character of the word
+            //     el.innerHTML = '';  //set the html to be blank
+            //     //if we're displaying the last word, go back to the first word
+            //     if(word_counter == words.length)
+            //         word_counter = 0;
+
+            // }
+        }
+        setInterval(updateText,500);
+    </script>
+</body>
+</html>
