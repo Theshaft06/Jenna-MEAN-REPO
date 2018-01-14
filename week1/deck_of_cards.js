@@ -1,6 +1,6 @@
 class Deck{
     constructor(){
-        this.names = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+        this.values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
         this.suits = ['Hearts','Diamonds','Spades','Clubs'];
         this.reset();
     }
@@ -19,8 +19,8 @@ class Deck{
         this.cards = [];
     
         for( var s = 0; s < this.suits.length; s++ ) {
-            for( var n = 0; n < this.names.length; n++ ) {
-                this.cards.push( new Card( n+1, this.names[n], this.suits[s] ) );
+            for( var v = 0; v < this.values.length; v++ ) {
+                this.cards.push( new Card( this.values[v], this.suits[s] ) );
             }
         }
     }
@@ -32,9 +32,8 @@ class Deck{
 
 
 class Card{
-    constructor(value, name, suit){
+    constructor(value, suit){
         this.value = value;
-        this.name = name;
         this.suit = suit;
     }
 }
@@ -50,16 +49,21 @@ class Player{
         this.hand.push(card);
     }
 
+    receiveHand(card){
+        for (let x = 0; x < 2; x++){
+            player1.receiveCard(deck.deal());
+        }    
+    }
+
     discard(card){
         this.hand.splice(this.hand.indexOf(card), 1);
     }
 }
 
 
-console.log(new Deck().shuffle().deal());
+
 const deck = new Deck();
-const player1 = new Player("Matt");
-for (let x = 0; x < 2; x++){
-    player1.receiveCard(deck.deal());
-}
+const player1 = new Player("Jenna")
+deck.shuffle();
+player1.receiveHand();
 console.log(player1);
