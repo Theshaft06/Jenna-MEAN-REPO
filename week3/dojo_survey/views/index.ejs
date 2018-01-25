@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset=utf-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Intro To Express</title>
+</head>
+<body>
+    <h1>Dojo Survey</h1>
+    <div>
+        <form action="/results" method="post" accept-charset="utf-8">
+            <div><label for="">Your Name: </label>
+            <input type="text" name="name" value=""></div>
+            <div><label for="">Dojo Location: </label>
+            <select name="location">
+                <option value="San Jose">San Jose</option>
+                <option value="Chicago">Chicago</option>
+                <option value="Seattle">Seattle</option>
+            </select></div>
+            <div><label for="">Favorite Language: </label>
+            <select name="language" >
+                <option value="Python">Python</option>
+                <option value="HTML">HTML</option>
+                <option value="Ruby">Ruby</option>
+            </select></div>
+            <div><label>Comment (optional):</label>
+            <textarea name="comment" rows="5", cols="35"></textarea></div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>
