@@ -1,5 +1,4 @@
 const color = require("colors");
-const babel = require("babel-polyfill");
 
 
 module.exports = function(request, response, next) {
@@ -12,7 +11,7 @@ module.exports = function(request, response, next) {
             if (typeof data === "object") {
                 if (Object.keys(data)) {
                     console.log(color.red(`The request ${ key } object has these properties: `));
-                    for (const prop of babel.Object.entries(data)) {
+                    for (const prop of Object.entries(data)) {
                         console.log(prop);
                         console.log(color.blue(`\t${ prop[0] } => ${ data[prop]}`));
                     }

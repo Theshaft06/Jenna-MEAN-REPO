@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dojo Survey Revisited</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
+        $(document). ready(function (){
+            // this triggers the connection event in our server!
+            var socket  = io.connect();
+            // we'll write all the socket stuff after the above line!
+            $( 'button').click(function (){
+                socket.emit( "posting_form");
+            });
+            socket.on("updated_message", function(){
+                console.log("Got the form data!")
+                $("#submitted_info").toggle();
+            });
+            // socket.on( 'server_response', function (data){
+            //     console.log( 'The server says: '  + data.response);
+            // });
+        })
+    </script>
+</head>
+<body>
+    <h1>Dojo Survey</h1>
+
+    <div class="submitted_info" style="display: none">
+        <h3>You emitted the following information to the server: <%= response %></h3>
+    </div>
+    <div>
+        <form action="/results" method="post" accept-charset="utf-8">
+            <div><label for="">Your Name: </label>
+            <input type="text" name="name" value=""></div>
+            <div><label for="">Dojo Location: </label>
+            <select name="location">
+                <option value="San Jose">San Jose</option>
+                <option value="Chicago">Chicago</option>
+                <option value="Seattle">Seattle</option>
+            </select></div>
+            <div><label for="">Favorite Language: </label>
+            <select name="language" >
+                <option value="Python">Python</option>
+                <option value="HTML">HTML</option>
+                <option value="Ruby">Ruby</option>
+            </select></div>
+            <div><label>Comment (optional):</label>
+            <textarea name="comment" rows="5", cols="35"></textarea></div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>
